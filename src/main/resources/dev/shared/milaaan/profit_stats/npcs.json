@@ -1,0 +1,19 @@
+{
+  "_comment": "Base values from the DarkOrbit wikis (fandom Alien stats / Alien table / Location of aliens, darkorbitwiki.com map pages). Boss = x4, Uber = x8 HP, shield and rewards. Measured in-game values always replace these once available. X-n = 1-n, 2-n and 3-n.",
+  "npcs": [
+    {"name": "Streuner",   "hp": 800,     "shield": 400,     "credits": 400,     "uridium": 1,    "experience": 400,    "honor": 2,    "maps": ["X-1", "X-2"],               "bossMaps": ["X-2"]},
+    {"name": "Lordakia",   "hp": 2000,    "shield": 2000,    "credits": 800,     "uridium": 2,    "experience": 800,    "honor": 4,    "maps": ["X-2", "X-3", "X-4", "X-5"], "bossMaps": ["X-2"]},
+    {"name": "Saimon",     "hp": 6000,    "shield": 3000,    "credits": 1600,    "uridium": 4,    "experience": 1600,   "honor": 8,    "maps": ["X-3", "X-4"],               "bossMaps": ["X-3", "X-4"]},
+    {"name": "Mordon",     "hp": 20000,   "shield": 10000,   "credits": 6400,    "uridium": 8,    "experience": 3200,   "honor": 16,   "maps": ["X-3", "X-4"],               "bossMaps": ["X-3"]},
+    {"name": "Devolarium", "hp": 100000,  "shield": 100000,  "credits": 51200,   "uridium": 16,   "experience": 6400,   "honor": 32,   "maps": ["X-3"],                      "bossMaps": ["X-3"]},
+    {"name": "Sibelon",    "hp": 200000,  "shield": 200000,  "credits": 102400,  "uridium": 32,   "experience": 12800,  "honor": 64,   "maps": ["X-4"],                      "bossMaps": ["X-4"]},
+    {"name": "Sibelonit",  "hp": 40000,   "shield": 40000,   "credits": 12800,   "uridium": 12,   "experience": 3200,   "honor": 16,   "maps": ["X-5"],                      "bossMaps": ["X-5"]},
+    {"name": "Lordakium",  "hp": 300000,  "shield": 200000,  "credits": 204800,  "uridium": 64,   "experience": 25600,  "honor": 128,  "maps": ["X-5"],                      "bossMaps": ["X-5"]},
+    {"name": "Kristallin", "hp": 50000,   "shield": 40000,   "credits": 12800,   "uridium": 16,   "experience": 6400,   "honor": 32,   "maps": ["X-6", "X-7"],               "bossMaps": ["X-6", "X-7"]},
+    {"name": "Kristallon", "hp": 400000,  "shield": 300000,  "credits": 409600,  "uridium": 128,  "experience": 51200,  "honor": 256,  "maps": ["X-6", "X-7"],               "bossMaps": ["X-6", "X-7"]},
+    {"name": "Protegit",   "hp": 50000,   "shield": 40000,   "credits": 12800,   "uridium": 16,   "experience": 6400,   "honor": 32,   "maps": ["X-6"],                      "bossMaps": []},
+    {"name": "Cubikon",    "hp": 1600000, "shield": 1200000, "credits": 1638400, "uridium": 1024, "experience": 536200, "honor": 1024, "maps": ["X-6"],                      "bossMaps": [], "noUber": true},
+    {"name": "StreuneR",   "hp": 20000,   "shield": 10000,   "credits": 6400,    "uridium": 8,    "experience": 3200,   "honor": 16,   "maps": ["X-8"],                      "bossMaps": ["X-8"]}
+  ],
+  "uberMaps": ["4-5"]
+}

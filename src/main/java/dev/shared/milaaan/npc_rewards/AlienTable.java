@@ -12,36 +12,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Loads the NPC table bundled in the jar (no internet access) and generates
- * the Boss (x4) and Uber (x8) variants of every base alien.
- */
+/** Loads the NPC table bundled in the jar (no internet access at runtime). */
 public final class AlienTable {
     private static final String RESOURCE = "/dev/shared/milaaan/npc_rewards/npcs.json";
-    private static final int BOSS_FACTOR = 4;
-    private static final int UBER_FACTOR = 8;
 
     private AlienTable() {
     }
 
     /** Raw JSON content. */
     private static class File {
-        List<Base> npcs = new ArrayList<>();
-        List<String> uberMaps = new ArrayList<>();
-    }
-
-    /** One base alien as written in the JSON file. */
-    private static class Base {
-        String name;
-        int hp;
-        int shield;
-        double credits;
-        double uridium;
-        double experience;
-        double honor;
-        List<String> maps = new ArrayList<>();
-        List<String> bossMaps = new ArrayList<>();
-        boolean noUber;
+        List<AlienEntry> npcs = new ArrayList<>();
     }
 
     public static List<AlienEntry> load() {
@@ -52,30 +32,11 @@ public final class AlienTable {
             }
             try (Reader reader = new InputStreamReader(in, StandardCharsets.UTF_8)) {
                 File file = new Gson().fromJson(reader, File.class);
-                return file == null ? Collections.<AlienEntry>emptyList() : build(file);
+                return file == null || file.npcs == null ? Collections.<AlienEntry>emptyList() : file.npcs;
             }
         } catch (IOException | JsonParseException e) {
             System.out.println("NPC Rewards: could not read the NPC table: " + e.getMessage());
             return Collections.emptyList();
         }
-    }
-
-    private static List<AlienEntry> build(File file) {
-        List<AlienEntry> entries = new ArrayList<>();
-        for (Base base : file.npcs) {
-            entries.add(variant(base, AlienEntry.Kind.NORMAL, "", 1, base.maps));
-            if (!isEmpty(base.bossMaps)) entries.add(variant(base, AlienEntry.Kind.BOSS, "Boss ", BOSS_FACTOR, base.bossMaps));
-            if (!base.noUber) entries.add(variant(base, AlienEntry.Kind.UBER, "Uber ", UBER_FACTOR, file.uberMaps));
-        }
-        return entries;
-    }
-
-    private static AlienEntry variant(Base b, AlienEntry.Kind kind, String prefix, int f, List<String> maps) {
-        return new AlienEntry(prefix + b.name, kind, String.join(", ", maps), b.hp * f, b.shield * f,
-                b.credits * f, b.uridium * f, b.experience * f, b.honor * f);
-    }
-
-    private static boolean isEmpty(List<String> list) {
-        return list == null || list.isEmpty();
     }
 }

@@ -54,11 +54,11 @@ final class AlienTableModel extends AbstractTableModel {
         if (column >= FIRST_RATIO_COLUMN) return this.ratio(a, column);
         switch (column) {
             case 0: return a.name;
-            case 1: return this.texts.get("type." + a.kind.name().toLowerCase(Locale.ROOT));
+            case 1: return this.texts.get("type." + (a.category == null ? "event" : a.category.toLowerCase(Locale.ROOT)));
             case 2: return a.maps;
-            case 3: return a.hp;
+            case 3: return a.hp > 0 ? a.hp : null;
             case 4: return a.shield;
-            case 5: return a.totalHp();
+            case 5: return a.hp > 0 ? a.totalHp() : null;
             case 6: return a.credits;
             case 7: return a.uridium;
             case 8: return a.experience;

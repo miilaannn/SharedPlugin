@@ -16,7 +16,7 @@ final class NumberRenderer extends DefaultTableCellRenderer {
     @Override
     protected void setValue(Object value) {
         if (!(value instanceof Number)) {
-            setText(String.valueOf(value));
+            setText(value == null ? "?" : String.valueOf(value));
             return;
         }
         double v = ((Number) value).doubleValue();

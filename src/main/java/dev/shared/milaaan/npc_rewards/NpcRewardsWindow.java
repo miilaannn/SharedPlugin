@@ -75,7 +75,7 @@ final class NpcRewardsWindow extends JFrame {
         return table;
     }
 
-    /** Filters rows on the NPC name and maps as the user types. */
+    /** Filters rows on the NPC name, type and maps as the user types. */
     private final class SearchListener implements DocumentListener {
         @Override
         public void insertUpdate(DocumentEvent e) {
@@ -95,7 +95,7 @@ final class NpcRewardsWindow extends JFrame {
         private void apply() {
             String text = NpcRewardsWindow.this.search.getText().trim();
             NpcRewardsWindow.this.sorter.setRowFilter(text.isEmpty() ? null
-                    : RowFilter.regexFilter("(?i)" + Pattern.quote(text), 0, 2));
+                    : RowFilter.regexFilter("(?i)" + Pattern.quote(text), 0, 1, 2));
         }
     }
 }
